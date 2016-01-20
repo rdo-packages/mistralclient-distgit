@@ -1,3 +1,5 @@
-# UUID                                  	Group Name
-#
-37daf30ed8ba0d4ad99c4be6407dd94f71c3d06e	mistralclient-distgit-ptl
+# UUID          Group Name
+6ddfecad023c6f4fa3ac8c4d2583c502ea675a73 	Non-Interactive Users
+2687e9fb8fb795ed04002e8193af41d1931982ec       	mistralclient-distgit-core
+37daf30ed8ba0d4ad99c4be6407dd94f71c3d06e        	mistralclient-distgit-ptl
+global:Registered-Users		Registered Users
