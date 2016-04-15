@@ -1,4 +1,5 @@
 %global pypi_name mistralclient
+%global cliname   mistral
 
 %{!?python2_shortver: %global python2_shortver %(%{__python2} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
 
@@ -11,7 +12,7 @@
 
 Name:           python-%{pypi_name}
 Version:        2.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python client for Mistral REST API
 
 License:        ASL 2.0
@@ -115,7 +116,7 @@ rm -rf html/.{doctrees,buildinfo}
 %if 0%{?with_python3}
 pushd %{py3dir}
 LANG=en_US.UTF-8 %{__python3} setup.py install --skip-build --root %{buildroot}
-mv %{buildroot}%{_bindir}/%{pypi_name} %{buildroot}%{_bindir}/python3-%{pypi_name}
+mv %{buildroot}%{_bindir}/%{cliname} %{buildroot}%{_bindir}/python3-%{cliname}
 popd
 %endif
 
@@ -123,16 +124,18 @@ popd
 
 # rename binaries, make compat symlinks
 pushd %{buildroot}%{_bindir}
-ln -s %{pypi_name} %{pypi_name}
-for i in %{pypi_name}-{2,%{?python2_shortver}}; do
-    ln -s %{pypi_name} $i
+for i in %{cliname}-{2,%{?python2_shortver}}; do
+    ln -s %{cliname} $i
 done
 %if 0%{?with_python3}
-for i in %{pypi_name}-{3,%{?python3_shortver}}; do
-    ln -s  python3-%{pypi_name} $i
+for i in %{cliname}-{3,%{?python3_shortver}}; do
+    ln -s  python3-%{cliname} $i
 done
 %endif
 popd
+# Install bash completion scripts
+mkdir -p %{buildroot}%{_sysconfdir}/bash_completion.d/
+install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_completion.d/python-mistralclient
 
 
 %files -n python2-%{pypi_name}
@@ -140,7 +143,10 @@ popd
 %doc README.md
 %{python2_sitelib}/%{pypi_name}
 %{python2_sitelib}/python_%{pypi_name}-*-py?.?.egg-info
-%{_bindir}/mistral*
+%{_bindir}/mistral
+%{_bindir}/mistral-2*
+%{_sysconfdir}/bash_completion.d/python-mistralclient
+
 
 # Files for python3
 %if 0%{?with_python3}
@@ -148,7 +154,7 @@ popd
 %license LICENSE
 %doc README.md
 %{_bindir}/python3-mistral*
-%{_bindir}/mistral*
+%{_bindir}/mistral-3*
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/python_%{pypi_name}-%{version}-py?.?.egg-info
 %endif
@@ -159,6 +165,9 @@ popd
 
 
 %changelog
+* Fri Apr 15 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 2.0.0-3
+- Fix CLI
+
 * Fri Apr 15 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 2.0.0-2
 - Resync w/ spec contributed by mflobo
 
