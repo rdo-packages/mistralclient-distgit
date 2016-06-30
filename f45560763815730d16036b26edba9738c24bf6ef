@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da2a55be_c9ff91a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2016-06-30T23:07:12Z",
+      "side": 1,
+      "message": "blueprint mistral-osprofiler was added on master branch in https://review.openstack.org/328045",
+      "revId": "f45560763815730d16036b26edba9738c24bf6ef",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
