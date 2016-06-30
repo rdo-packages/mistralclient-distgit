@@ -17,6 +17,7 @@ BuildRequires: python-pbr
 
 Requires: python-keystoneclient
 Requires: python-pbr
+Requires: python-osprofiler
 Requires: python-six
 Requires: PyYAML
 Requires: python-requests
