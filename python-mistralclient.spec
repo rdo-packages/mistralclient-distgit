@@ -80,3 +80,4 @@ rm -fr html/.doctrees html/.buildinfo
 %doc html
 
 %changelog
+# REMOVEME: error caused by commit 
