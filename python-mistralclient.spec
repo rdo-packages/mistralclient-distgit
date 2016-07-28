@@ -70,7 +70,8 @@ sphinx-build -b html doc/source html
 rm -fr html/.doctrees html/.buildinfo
 
 %files
-%doc LICENSE README.rst
+%doc README.rst
+%license LICENSE
 %{_bindir}/mistral
 %{python2_sitelib}/mistralclient
 %{python2_sitelib}/*.egg-info
