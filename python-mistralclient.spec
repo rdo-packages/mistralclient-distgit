@@ -1,7 +1,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:    python-mistralclient
-Version: XXX
-Release: XXX
+Version: 2.1.1
+Release: 1%{?dist}
 Summary: Python API and CLI for OpenStack Mistral
 
 Group:   Development/Languages
@@ -82,3 +82,6 @@ rm -fr html/.doctrees html/.buildinfo
 %doc html
 
 %changelog
+* Tue Sep 13 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.1.1-1
+- Update to 2.1.1
+
