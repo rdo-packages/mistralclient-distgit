@@ -1,3 +1,4 @@
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:    python-mistralclient
 Version: XXX
 Release: XXX
@@ -6,7 +7,7 @@ Summary: Python API and CLI for OpenStack Mistral
 Group:   Development/Languages
 License: ASL 2.0
 URL:     https://pypi.io/pypi/python-mistralclient
-Source0: http://tarballs.openstack.org/%{name}/%{name}-%{version}.tar.gz
+Source0: http://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
 
 BuildArch: noarch
 
