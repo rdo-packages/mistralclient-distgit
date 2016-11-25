@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5adbc538_3410334e",
+        "filename": "python-mistralclient.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2016-11-25T23:30:13Z",
+      "side": 1,
+      "message": "Should this be 0 with FIXME until py3 OSC is available?",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "845a4afa9ead656dcf7a87fd690fd716f8507a56",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
