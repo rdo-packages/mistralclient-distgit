@@ -4,7 +4,7 @@
 %{!?python2_shortver: %global python2_shortver %(%{__python2} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
 
 %if 0%{?fedora}
-%global with_python3 1
+%global with_python3 0
 %{!?python3_shortver: %global python3_shortver %(%{__python3} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
 %endif
 
@@ -16,8 +16,8 @@ Release:        XXX
 Summary:        Python client for Mistral REST API
 
 License:        ASL 2.0
-URL:            http://pypi.python.org/pypi/%{name}
-Source0:        http://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
+URL:            https://pypi.io/pypi/python-mistralclient
+Source0:        https://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
 
 BuildArch:      noarch
 
@@ -36,6 +36,7 @@ BuildRequires:  git
 Requires:       python-cliff >= 1.14
 Requires:       python-keystoneclient >= 1.6.0
 Requires:       python-openstackclient >= 1.5.0
+Requires:       python-osprofiler
 Requires:       python-pbr
 Requires:       python-requests >= 2.5.2
 Requires:       PyYAML >= 3.1.0
@@ -62,6 +63,7 @@ BuildRequires:  python-tools
 Requires:       python3-cliff >= 1.14
 Requires:       python3-keystoneclient >= 1.6.0
 Requires:       python3-openstackclient >= 1.5.0
+Requires:       python3-osprofiler
 Requires:       python3-pbr
 Requires:       python3-requests >= 2.5.2
 Requires:       PyYAML >= 3.1.0
