@@ -89,7 +89,16 @@ and Command Line Interface (CLI) library.
 Summary:       Documentation for python client for Mistral REST API
 
 BuildRequires: python-sphinx
-BuildRequires: python-oslo-sphinx >= 2.3.0
+BuildRequires: python-openstackdocstheme
+BuildRequires: PyYAML
+BuildRequires: python-tempest
+BuildRequires: python-oslotest
+BuildRequires: python-cliff
+BuildRequires: python-stevedore
+BuildRequires: python-oslo-utils
+BuildRequires: python-oslo-i18n
+BuildRequires: python-osc-lib
+
 
 %description -n python-%{pypi_name}-doc
 Documentation for python client for Mistral REST API. Includes python library
@@ -120,9 +129,9 @@ popd
 %endif
 
 # generate html docs
-sphinx-build doc/source html
+%{__python2} setup.py build_sphinx -b html
 # remove the sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
+rm -rf doc/build/html/.{doctrees,buildinfo}
 
 
 %install
@@ -173,7 +182,7 @@ install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_
 %endif
 
 %files -n python-%{pypi_name}-doc
-%doc html
+%doc doc/build/html
 %license LICENSE
 
 
