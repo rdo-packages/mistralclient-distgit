@@ -98,6 +98,9 @@ BuildRequires: python-stevedore
 BuildRequires: python-oslo-utils
 BuildRequires: python-oslo-i18n
 BuildRequires: python-osc-lib
+BuildRequires: python-keystoneclient
+BuildRequires: python-requests-mock
+BuildRequires: python-osprofiler
 
 
 %description -n python-%{pypi_name}-doc
