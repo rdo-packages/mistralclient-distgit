@@ -33,18 +33,17 @@ BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
 BuildRequires:  git
 
-Requires:       python-cliff >= 2.3.0
+Requires:       python-cliff >= 2.8.0
 Requires:       python-keystoneclient >= 1:3.8.0
-Requires:       python-openstackclient >= 1.5.0
-Requires:       python-osc-lib >= 1.2.0
+Requires:       python-osc-lib >= 1.7.0
 Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-oslo-utils >= 3.18.0
+Requires:       python-oslo-utils >= 3.20.0
 Requires:       python-osprofiler
 Requires:       python-pbr
-Requires:       python-requests >= 2.10.0
+Requires:       python-requests >= 2.14.2
 Requires:       python-six >= 1.9.0
-Requires:       python-stevedore >= 1.17.1
-Requires:       PyYAML >= 3.10
+Requires:       python-stevedore >= 1.20.0
+Requires:       PyYAML >= 3.10.0
 
 Summary:        Python client for Mistral REST API
 %{?python_provide:%python_provide python2-%{pypi_name}}
@@ -65,18 +64,17 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-pbr >= 0.6
 BuildRequires:  python-tools
 
-Requires:       python3-cliff >= 2.3.0
+Requires:       python3-cliff >= 2.8.0
 Requires:       python3-keystoneclient >= 1:3.8.0
-Requires:       python3-openstackclient >= 1.5.0
-Requires:       python3-osc-lib >= 1.2.0
+Requires:       python3-osc-lib >= 1.7.0
 Requires:       python3-oslo-i18n >= 2.1.0
-Requires:       python3-oslo-utils >= 3.18.0
+Requires:       python3-oslo-utils >= 3.20.0
 Requires:       python3-osprofiler
 Requires:       python3-pbr
-Requires:       python3-requests >= 2.10.0
+Requires:       python3-requests >= 2.14.2
 Requires:       python3-six >= 1.9.0
-Requires:       python3-stevedore >= 1.17.1
-Requires:       python3-PyYAML >= 3.10
+Requires:       python3-stevedore >= 1.20.0
+Requires:       python3-PyYAML >= 3.10.0
 
 %description -n python3-%{pypi_name}
 Python client for Mistral REST API. Includes python library for Mistral API
