@@ -11,7 +11,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pypi_name}
-Version:        3.0.1
+Version:        3.0.2
 Release:        1%{?dist}
 Summary:        Python client for Mistral REST API
 
@@ -178,6 +178,9 @@ install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_
 
 
 %changelog
+* Thu Aug 10 2017 rdo-trunk <javier.pena@redhat.com> 3.0.2-1
+- Update to 3.0.2
+
 * Wed Jul 26 2017 rdo-trunk <javier.pena@redhat.com> 3.0.1-1
 - Update to 3.0.1
 
