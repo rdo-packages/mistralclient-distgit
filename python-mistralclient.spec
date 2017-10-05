@@ -10,6 +10,10 @@
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
+%global common_desc \
+Python client for Mistral REST API. Includes python library for Mistral API \
+and Command Line Interface (CLI) library.
+
 Name:           python-%{pypi_name}
 Version:        XXX
 Release:        XXX
@@ -22,9 +26,7 @@ Source0:        https://tarballs.openstack.org/%{name}/%{name}-%{upstream_versio
 BuildArch:      noarch
 
 %description
-Python client for Mistral REST API. Includes python library for Mistral API
-and Command Line Interface (CLI) library.
-
+%{common_desc}
 
 %package -n     python2-%{pypi_name}
 
@@ -49,8 +51,7 @@ Summary:        Python client for Mistral REST API
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
 %description -n python2-%{pypi_name}
-Python client for Mistral REST API. Includes python library for Mistral API
-and Command Line Interface (CLI) library.
+%{common_desc}
 
 
 # Python3 package
@@ -77,8 +78,7 @@ Requires:       python3-stevedore >= 1.20.0
 Requires:       python3-PyYAML >= 3.10
 
 %description -n python3-%{pypi_name}
-Python client for Mistral REST API. Includes python library for Mistral API
-and Command Line Interface (CLI) library.
+%{common_desc}
 %endif
 
 
@@ -102,9 +102,9 @@ BuildRequires: python-osprofiler
 
 
 %description -n python-%{pypi_name}-doc
-Documentation for python client for Mistral REST API. Includes python library
-for Mistral API and Command Line Interface (CLI) library.
+%{common_desc}
 
+This package contains documentation.
 
 %prep
 %autosetup -n %{name}-%{upstream_version} -S git
