@@ -11,7 +11,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pypi_name}
-Version:        3.1.3
+Version:        3.1.4
 Release:        1%{?dist}
 Summary:        Python client for Mistral REST API
 
@@ -188,6 +188,9 @@ install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_
 
 
 %changelog
+* Tue Nov 07 2017 RDO <dev@lists.rdoproject.org> 3.1.4-1
+- Update to 3.1.4
+
 * Wed Sep 13 2017 rdo-trunk <javier.pena@redhat.com> 3.1.3-1
 - Update to 3.1.3
 
