@@ -4,7 +4,7 @@
 %{!?python2_shortver: %global python2_shortver %(%{__python2} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
 
 %if 0%{?fedora}
-%global with_python3 0
+%global with_python3 1
 %{!?python3_shortver: %global python3_shortver %(%{__python3} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
 %endif
 
@@ -113,20 +113,11 @@ rm -rf %{pypi_name}.egg-info
 # Let RPM handle the dependencies
 rm -f test-requirements.txt requirements.txt
 
-%if 0%{?with_python3}
-rm -rf %{py3dir}
-cp -a . %{py3dir}
-2to3 --write --nobackups %{py3dir}
-%endif
-
-
 %build
 %{__python2} setup.py build
 
 %if 0%{?with_python3}
-pushd %{py3dir}
-LANG=en_US.UTF-8 %{__python3} setup.py build
-popd
+%py3_build
 %endif
 
 # generate html docs
@@ -134,13 +125,10 @@ popd
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
-
 %install
 %if 0%{?with_python3}
-pushd %{py3dir}
-LANG=en_US.UTF-8 %{__python3} setup.py install --skip-build --root %{buildroot}
+%py3_install
 mv %{buildroot}%{_bindir}/%{cliname} %{buildroot}%{_bindir}/python3-%{cliname}
-popd
 %endif
 
 %{__python2} setup.py install --skip-build --root %{buildroot}
