@@ -31,21 +31,26 @@ BuildArch:      noarch
 %package -n     python2-%{pypi_name}
 
 BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
-BuildRequires:  python-pbr
+BuildRequires:  python2-setuptools
+BuildRequires:  python2-pbr
 BuildRequires:  git
 
+Requires:       python2-osc-lib >= 1.8.0
+Requires:       python2-oslo-i18n >= 3.15.3
+Requires:       python2-oslo-utils >= 3.33.0
+Requires:       python2-osprofiler
+Requires:       python2-pbr
+Requires:       python2-requests >= 2.14.2
+Requires:       python2-six >= 1.10.0
+Requires:       python2-stevedore >= 1.20.0
+Requires:       python2-keystoneauth1 >= 3.3.0
+%if 0%{?fedora} > 0
+Requires:       python2-cliff >= 2.8.0
+Requires:       python2-pyyaml >= 3.10
+%else
 Requires:       python-cliff >= 2.8.0
-Requires:       python-keystoneclient >= 1:3.8.0
-Requires:       python-osc-lib >= 1.7.0
-Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-oslo-utils >= 3.20.0
-Requires:       python-osprofiler
-Requires:       python-pbr
-Requires:       python-requests >= 2.10.0
-Requires:       python-six >= 1.9.0
-Requires:       python-stevedore >= 1.20.0
 Requires:       PyYAML >= 3.10
+%endif
 
 Summary:        Python client for Mistral REST API
 %{?python_provide:%python_provide python2-%{pypi_name}}
@@ -66,16 +71,16 @@ BuildRequires:  python3-pbr >= 0.6
 BuildRequires:  python-tools
 
 Requires:       python3-cliff >= 2.8.0
-Requires:       python3-keystoneclient >= 1:3.8.0
-Requires:       python3-osc-lib >= 1.7.0
-Requires:       python3-oslo-i18n >= 2.1.0
-Requires:       python3-oslo-utils >= 3.20.0
+Requires:       python3-osc-lib >= 1.8.0
+Requires:       python3-oslo-i18n >= 3.15.3
+Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-osprofiler
 Requires:       python3-pbr
-Requires:       python3-requests >= 2.10.0
-Requires:       python3-six >= 1.9.0
+Requires:       python3-requests >= 2.14.2
+Requires:       python3-six >= 1.10.0
 Requires:       python3-stevedore >= 1.20.0
 Requires:       python3-PyYAML >= 3.10
+Requires:       python3-keystoneauth1 >= 3.3.0
 
 %description -n python3-%{pypi_name}
 %{common_desc}
@@ -86,19 +91,24 @@ Requires:       python3-PyYAML >= 3.10
 %package -n python-%{pypi_name}-doc
 Summary:       Documentation for python client for Mistral REST API
 
-BuildRequires: python-sphinx
-BuildRequires: python-openstackdocstheme
+BuildRequires: python2-sphinx
+BuildRequires: python2-openstackdocstheme
+BuildRequires: python2-tempest
+BuildRequires: python2-oslotest
+BuildRequires: python2-stevedore
+BuildRequires: python2-oslo-utils
+BuildRequires: python2-oslo-i18n
+BuildRequires: python2-osc-lib
+BuildRequires: python2-osprofiler
+%if 0%{?fedora} > 0
+BuildRequires: python2-pyyaml
+BuildRequires: python2-cliff
+BuildRequires: python2-requests-mock
+%else
 BuildRequires: PyYAML
-BuildRequires: python-tempest
-BuildRequires: python-oslotest
 BuildRequires: python-cliff
-BuildRequires: python-stevedore
-BuildRequires: python-oslo-utils
-BuildRequires: python-oslo-i18n
-BuildRequires: python-osc-lib
-BuildRequires: python-keystoneclient
 BuildRequires: python-requests-mock
-BuildRequires: python-osprofiler
+%endif
 
 
 %description -n python-%{pypi_name}-doc
