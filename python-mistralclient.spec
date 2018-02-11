@@ -15,8 +15,8 @@ Python client for Mistral REST API. Includes python library for Mistral API \
 and Command Line Interface (CLI) library.
 
 Name:           python-%{pypi_name}
-Version:        XXX
-Release:        XXX
+Version:        3.3.0
+Release:        1%{?dist}
 Summary:        Python client for Mistral REST API
 
 License:        ASL 2.0
@@ -93,7 +93,7 @@ Summary:       Documentation for python client for Mistral REST API
 
 BuildRequires: python2-sphinx
 BuildRequires: python2-openstackdocstheme
-BuildRequires: python2-tempest
+BuildRequires: python-tempest
 BuildRequires: python2-oslotest
 BuildRequires: python2-stevedore
 BuildRequires: python2-oslo-utils
@@ -186,3 +186,6 @@ install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_
 
 
 %changelog
+* Thu Feb 15 2018 RDO <dev@lists.rdoproject.org> 3.3.0-1
+- Update to 3.3.0
+
