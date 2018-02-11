@@ -8,20 +8,25 @@
 %{!?python3_shortver: %global python3_shortver %(%{__python3} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
 %endif
 
-%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+%{!?upstream_version: %global upstream_version %{commit}}
+%define upstream_name python-mistralclient
+%global commit 1008e4e4cbd58465226a54c261b1d73021fcd2ed
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+# DO NOT REMOVE ALPHATAG
+%global alphatag .%{shortcommit}git
 
 %global common_desc \
 Python client for Mistral REST API. Includes python library for Mistral API \
 and Command Line Interface (CLI) library.
 
 Name:           python-%{pypi_name}
-Version:        XXX
-Release:        XXX
+Version:        3.2.0
+Release:        1%{?alphatag}%{?dist}
 Summary:        Python client for Mistral REST API
 
 License:        ASL 2.0
 URL:            https://pypi.io/pypi/python-mistralclient
-Source0:        https://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
+Source0:        https://github.com/openstack/%{upstream_name}/archive/%{commit}.tar.gz#/%{upstream_name}-%{shortcommit}.tar.gz
 
 BuildArch:      noarch
 
@@ -93,7 +98,7 @@ Summary:       Documentation for python client for Mistral REST API
 
 BuildRequires: python2-sphinx
 BuildRequires: python2-openstackdocstheme
-BuildRequires: python2-tempest
+BuildRequires: python-tempest
 BuildRequires: python2-oslotest
 BuildRequires: python2-stevedore
 BuildRequires: python2-oslo-utils
@@ -186,3 +191,6 @@ install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_
 
 
 %changelog
+* Sun Feb 11 2018 RDO <dev@lists.rdoproject.org> 3.2.0-1.1008e4egit
+- Update to post 3.2.0 (1008e4e4cbd58465226a54c261b1d73021fcd2ed) - LP#1748751
+
