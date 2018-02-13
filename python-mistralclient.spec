@@ -28,6 +28,9 @@ BuildArch:      noarch
 %description
 %{common_desc}
 
+# patches_base=3.2.0
+Patch0001: 0001-Don-t-override-session-during-auth.patch
+
 %package -n     python2-%{pypi_name}
 
 BuildRequires:  python2-devel

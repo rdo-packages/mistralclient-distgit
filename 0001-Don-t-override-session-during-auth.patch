@@ -1,0 +1,33 @@
+From 8762b4e7155a618648f896e49d1d2fe405a78a29 Mon Sep 17 00:00:00 2001
+From: Thomas Herve <therve@redhat.com>
+Date: Mon, 12 Feb 2018 14:50:41 +0100
+Subject: [PATCH] Don't override session during auth
+
+Looks like we try to override the session even if we don't auth, let's
+not do that.
+
+Change-Id: I520c3d020e3415c5737af7912bddf34931190d65
+Closes-Bug: #1748751
+(cherry picked from commit f5816f1d79a04679dafd8a5e8b0c344148246306)
+---
+ mistralclient/api/v2/client.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/mistralclient/api/v2/client.py b/mistralclient/api/v2/client.py
+index 0e75487..1dc5c66 100644
+--- a/mistralclient/api/v2/client.py
++++ b/mistralclient/api/v2/client.py
+@@ -59,9 +59,10 @@ class Client(object):
+         else:
+             auth_response = {}
+ 
+-        # If the session was None and we're using keystone auth, it will be
+-        # created by the auth_handler.
+-        session = auth_response.pop('session', None)
++        if session is None:
++            # If the session was None and we're using keystone auth, it will be
++            # created by the auth_handler.
++            session = auth_response.pop('session', None)
+ 
+         req.update(auth_response)
+ 
