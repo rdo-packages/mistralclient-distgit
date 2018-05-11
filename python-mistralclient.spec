@@ -93,7 +93,6 @@ Summary:       Documentation for python client for Mistral REST API
 
 BuildRequires: python2-sphinx
 BuildRequires: python2-openstackdocstheme
-BuildRequires: python2-tempest
 BuildRequires: python2-oslotest
 BuildRequires: python2-stevedore
 BuildRequires: python2-oslo-utils
@@ -122,6 +121,8 @@ This package contains documentation.
 rm -rf %{pypi_name}.egg-info
 # Let RPM handle the dependencies
 rm -f test-requirements.txt requirements.txt
+# Remove the functional tests, we don't need them in the package
+rm -rf mistralclient/tests/functional
 
 %build
 %{__python2} setup.py build
