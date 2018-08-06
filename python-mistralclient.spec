@@ -35,15 +35,16 @@ BuildRequires:  python2-setuptools
 BuildRequires:  python2-pbr
 BuildRequires:  git
 
-Requires:       python2-osc-lib >= 1.8.0
+Requires:       python2-osc-lib >= 1.10.0
 Requires:       python2-oslo-i18n >= 3.15.3
 Requires:       python2-oslo-utils >= 3.33.0
+Requires:       python2-oslo-serialization >= 2.18.0
 Requires:       python2-osprofiler
 Requires:       python2-pbr
 Requires:       python2-requests >= 2.14.2
 Requires:       python2-six >= 1.10.0
 Requires:       python2-stevedore >= 1.20.0
-Requires:       python2-keystoneauth1 >= 3.3.0
+Requires:       python2-keystoneauth1 >= 3.4.0
 %if 0%{?fedora} > 0
 Requires:       python2-cliff >= 2.8.0
 Requires:       python2-pyyaml >= 3.10
@@ -71,16 +72,17 @@ BuildRequires:  python3-pbr >= 0.6
 BuildRequires:  python-tools
 
 Requires:       python3-cliff >= 2.8.0
-Requires:       python3-osc-lib >= 1.8.0
+Requires:       python3-osc-lib >= 1.10.0
 Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-oslo-utils >= 3.33.0
+Requires:       python3-oslo-serialization >= 2.18.0
 Requires:       python3-osprofiler
 Requires:       python3-pbr
 Requires:       python3-requests >= 2.14.2
 Requires:       python3-six >= 1.10.0
 Requires:       python3-stevedore >= 1.20.0
 Requires:       python3-PyYAML >= 3.10
-Requires:       python3-keystoneauth1 >= 3.3.0
+Requires:       python3-keystoneauth1 >= 3.4.0
 
 %description -n python3-%{pypi_name}
 %{common_desc}
