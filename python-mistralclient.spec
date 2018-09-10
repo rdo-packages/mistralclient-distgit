@@ -95,6 +95,7 @@ Summary:       Documentation for python client for Mistral REST API
 
 BuildRequires: python2-sphinx
 BuildRequires: python2-openstackdocstheme
+BuildRequires: python2-sphinxcontrib-apidoc
 BuildRequires: python2-oslotest
 BuildRequires: python2-stevedore
 BuildRequires: python2-oslo-utils
