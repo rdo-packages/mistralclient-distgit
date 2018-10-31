@@ -1,12 +1,18 @@
+# Macros for py2/py3 compatibility
+%if 0%{?fedora} || 0%{?rhel} > 7
+%global pyver %{python3_pkgversion}
+%else
+%global pyver 2
+%endif
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %python%{pyver}_sitelib
+%global pyver_install %py%{pyver}_install
+%global pyver_build %py%{pyver}_build
+# End of macros for py2/py3 compatibility
 %global pypi_name mistralclient
 %global cliname   mistral
+%global with_doc 1
 
-%{!?python2_shortver: %global python2_shortver %(%{__python2} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
-
-%if 0%{?fedora}
-%global with_python3 1
-%{!?python3_shortver: %global python3_shortver %(%{__python3} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
-%endif
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -28,87 +34,64 @@ BuildArch:      noarch
 %description
 %{common_desc}
 
-%package -n     python2-%{pypi_name}
+%package -n     python%{pyver}-%{pypi_name}
+Summary:        Python client for Mistral REST API
+%{?python_provide:%python_provide python%{pyver}-%{pypi_name}}
+%if %{pyver} == 3
+Obsoletes: python2-%{pypi_name} < %{version}-%{release}
+%endif
 
-BuildRequires:  python2-devel
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-pbr
+BuildRequires:  python%{pyver}-devel
+BuildRequires:  python%{pyver}-setuptools
+BuildRequires:  python%{pyver}-pbr
 BuildRequires:  git
 
-Requires:       python2-osc-lib >= 1.10.0
-Requires:       python2-oslo-i18n >= 3.15.3
-Requires:       python2-oslo-utils >= 3.33.0
-Requires:       python2-oslo-serialization >= 2.18.0
-Requires:       python2-osprofiler
-Requires:       python2-pbr
-Requires:       python2-requests >= 2.14.2
-Requires:       python2-six >= 1.10.0
-Requires:       python2-stevedore >= 1.20.0
-Requires:       python2-keystoneauth1 >= 3.4.0
-%if 0%{?fedora} > 0
-Requires:       python2-cliff >= 2.8.0
-Requires:       python2-pyyaml >= 3.10
-%else
-Requires:       python-cliff >= 2.8.0
+Requires:       python%{pyver}-osc-lib >= 1.10.0
+Requires:       python%{pyver}-oslo-i18n >= 3.15.3
+Requires:       python%{pyver}-oslo-utils >= 3.33.0
+Requires:       python%{pyver}-oslo-serialization >= 2.18.0
+Requires:       python%{pyver}-osprofiler
+Requires:       python%{pyver}-pbr
+Requires:       python%{pyver}-requests >= 2.14.2
+Requires:       python%{pyver}-six >= 1.10.0
+Requires:       python%{pyver}-stevedore >= 1.20.0
+Requires:       python%{pyver}-keystoneauth1 >= 3.4.0
+Requires:       python%{pyver}-cliff >= 2.8.0
+
+# Handle python2 exception
+%if %{pyver} == 2
 Requires:       PyYAML >= 3.10
-%endif
-
-Summary:        Python client for Mistral REST API
-%{?python_provide:%python_provide python2-%{pypi_name}}
-
-%description -n python2-%{pypi_name}
-%{common_desc}
-
-
-# Python3 package
-%if 0%{?with_python3}
-%package -n     python3-%{pypi_name}
-Summary:        Python client for Mistral REST API
-%{?python_provide:%python_provide python3-%{pypi_name}}
-
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-pbr >= 0.6
-BuildRequires:  python-tools
-
-Requires:       python3-cliff >= 2.8.0
-Requires:       python3-osc-lib >= 1.10.0
-Requires:       python3-oslo-i18n >= 3.15.3
-Requires:       python3-oslo-utils >= 3.33.0
-Requires:       python3-oslo-serialization >= 2.18.0
-Requires:       python3-osprofiler
-Requires:       python3-pbr
-Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
-Requires:       python3-stevedore >= 1.20.0
-Requires:       python3-PyYAML >= 3.10
-Requires:       python3-keystoneauth1 >= 3.4.0
-
-%description -n python3-%{pypi_name}
-%{common_desc}
+%else
+Requires:       python%{pyver}-PyYAML >= 3.10
 %endif
 
 
+%description -n python%{pyver}-%{pypi_name}
+%{common_desc}
+
+%if 0%{with_doc}
 # Documentation package
 %package -n python-%{pypi_name}-doc
 Summary:       Documentation for python client for Mistral REST API
 
-BuildRequires: python2-sphinx
-BuildRequires: python2-openstackdocstheme
-BuildRequires: python2-oslotest
-BuildRequires: python2-stevedore
-BuildRequires: python2-oslo-utils
-BuildRequires: python2-oslo-i18n
-BuildRequires: python2-osc-lib
-BuildRequires: python2-osprofiler
-%if 0%{?fedora} > 0
-BuildRequires: python2-pyyaml
-BuildRequires: python2-cliff
-BuildRequires: python2-requests-mock
-%else
+BuildRequires: python%{pyver}-sphinx
+BuildRequires: python%{pyver}-openstackdocstheme
+BuildRequires: python%{pyver}-sphinxcontrib-apidoc
+BuildRequires: python%{pyver}-oslotest
+BuildRequires: python%{pyver}-stevedore
+BuildRequires: python%{pyver}-oslo-utils
+BuildRequires: python%{pyver}-oslo-i18n
+BuildRequires: python%{pyver}-osc-lib
+BuildRequires: python%{pyver}-osprofiler
+BuildRequires: python%{pyver}-cliff
+
+# Handle python2 exception
+%if %{pyver} == 2
 BuildRequires: PyYAML
-BuildRequires: python-cliff
 BuildRequires: python-requests-mock
+%else
+BuildRequires: python%{pyver}-PyYAML
+BuildRequires: python%{pyver}-requests-mock
 %endif
 
 
@@ -116,6 +99,7 @@ BuildRequires: python-requests-mock
 %{common_desc}
 
 This package contains documentation.
+%endif
 
 %prep
 %autosetup -n %{name}-%{upstream_version} -S git
@@ -127,65 +111,41 @@ rm -f test-requirements.txt requirements.txt
 rm -rf mistralclient/tests/functional
 
 %build
-%{__python2} setup.py build
+%{pyver_build}
 
-%if 0%{?with_python3}
-%py3_build
-%endif
-
+%if 0%{with_doc}
 # generate html docs
-%{__python2} setup.py build_sphinx -b html
-# remove the sphinx-build leftovers
+sphinx-build-%{pyver} -b html doc/source doc/build/html
+# remove the sphinx-build-%{pyver} leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
 
 %install
-%if 0%{?with_python3}
-%py3_install
-mv %{buildroot}%{_bindir}/%{cliname} %{buildroot}%{_bindir}/python3-%{cliname}
-%endif
+%{pyver_install}
 
-%{__python2} setup.py install --skip-build --root %{buildroot}
+# Create a versioned binary for backwards compatibility until everything is pure py3
+ln -s %{cliname} %{buildroot}%{_bindir}/%{cliname}-%{pyver}
 
-# rename binaries, make compat symlinks
-pushd %{buildroot}%{_bindir}
-for i in %{cliname}-{2,%{?python2_shortver}}; do
-    ln -s %{cliname} $i
-done
-%if 0%{?with_python3}
-for i in %{cliname}-{3,%{?python3_shortver}}; do
-    ln -s  python3-%{cliname} $i
-done
-%endif
-popd
 # Install bash completion scripts
 mkdir -p %{buildroot}%{_sysconfdir}/bash_completion.d/
 install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_completion.d/python-mistralclient
 
 
-%files -n python2-%{pypi_name}
+%files -n python%{pyver}-%{pypi_name}
 %license LICENSE
 %doc README.rst
-%{python2_sitelib}/%{pypi_name}
-%{python2_sitelib}/python_%{pypi_name}-*-py?.?.egg-info
-%{_bindir}/mistral
-%{_bindir}/mistral-2*
+%{pyver_sitelib}/%{pypi_name}
+%{pyver_sitelib}/python_%{pypi_name}-*-py?.?.egg-info
+%{_bindir}/%{cliname}
+%{_bindir}/%{cliname}-%{pyver}
 %{_sysconfdir}/bash_completion.d/python-mistralclient
 
 
-# Files for python3
-%if 0%{?with_python3}
-%files -n python3-%{pypi_name}
-%license LICENSE
-%doc README.rst
-%{_bindir}/python3-mistral*
-%{_bindir}/mistral-3*
-%{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/python_%{pypi_name}-*-py?.?.egg-info
-%endif
-
+%if 0%{with_doc}
 %files -n python-%{pypi_name}-doc
 %doc doc/build/html
 %license LICENSE
+%endif
 
 
 %changelog
