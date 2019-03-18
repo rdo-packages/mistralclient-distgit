@@ -26,7 +26,7 @@ Release:        XXX
 Summary:        Python client for Mistral REST API
 
 License:        ASL 2.0
-URL:            https://pypi.io/pypi/python-mistralclient
+URL:            https://pypi.io/pypi/python-%{pypi_name}
 Source0:        https://tarballs.openstack.org/%{name}/%{name}-%{upstream_version}.tar.gz
 
 BuildArch:      noarch
@@ -108,7 +108,7 @@ rm -rf %{pypi_name}.egg-info
 # Let RPM handle the dependencies
 rm -f test-requirements.txt requirements.txt
 # Remove the functional tests, we don't need them in the package
-rm -rf mistralclient/tests/functional
+rm -rf %{pypi_name}/tests/functional
 
 %build
 %{pyver_build}
@@ -128,7 +128,7 @@ ln -s %{cliname} %{buildroot}%{_bindir}/%{cliname}-%{pyver}
 
 # Install bash completion scripts
 mkdir -p %{buildroot}%{_sysconfdir}/bash_completion.d/
-install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_completion.d/python-mistralclient
+install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_completion.d/python-%{pypi_name}
 
 
 %files -n python%{pyver}-%{pypi_name}
@@ -138,7 +138,7 @@ install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_
 %{pyver_sitelib}/python_%{pypi_name}-*-py?.?.egg-info
 %{_bindir}/%{cliname}
 %{_bindir}/%{cliname}-%{pyver}
-%{_sysconfdir}/bash_completion.d/python-mistralclient
+%{_sysconfdir}/bash_completion.d/python-%{pypi_name}
 
 
 %if 0%{with_doc}
