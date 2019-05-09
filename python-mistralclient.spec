@@ -50,7 +50,6 @@ Requires:       python%{pyver}-osc-lib >= 1.10.0
 Requires:       python%{pyver}-oslo-i18n >= 3.15.3
 Requires:       python%{pyver}-oslo-utils >= 3.33.0
 Requires:       python%{pyver}-oslo-serialization >= 2.18.0
-Requires:       python%{pyver}-osprofiler
 Requires:       python%{pyver}-pbr
 Requires:       python%{pyver}-requests >= 2.14.2
 Requires:       python%{pyver}-six >= 1.10.0
@@ -82,7 +81,6 @@ BuildRequires: python%{pyver}-stevedore
 BuildRequires: python%{pyver}-oslo-utils
 BuildRequires: python%{pyver}-oslo-i18n
 BuildRequires: python%{pyver}-osc-lib
-BuildRequires: python%{pyver}-osprofiler
 BuildRequires: python%{pyver}-cliff
 
 # Handle python2 exception
