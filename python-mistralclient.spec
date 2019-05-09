@@ -22,7 +22,7 @@ and Command Line Interface (CLI) library.
 
 Name:           python-%{pypi_name}
 Version:        3.8.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python client for Mistral REST API
 
 License:        ASL 2.0
@@ -50,7 +50,6 @@ Requires:       python%{pyver}-osc-lib >= 1.10.0
 Requires:       python%{pyver}-oslo-i18n >= 3.15.3
 Requires:       python%{pyver}-oslo-utils >= 3.33.0
 Requires:       python%{pyver}-oslo-serialization >= 2.18.0
-Requires:       python%{pyver}-osprofiler
 Requires:       python%{pyver}-pbr
 Requires:       python%{pyver}-requests >= 2.14.2
 Requires:       python%{pyver}-six >= 1.10.0
@@ -82,7 +81,6 @@ BuildRequires: python%{pyver}-stevedore
 BuildRequires: python%{pyver}-oslo-utils
 BuildRequires: python%{pyver}-oslo-i18n
 BuildRequires: python%{pyver}-osc-lib
-BuildRequires: python%{pyver}-osprofiler
 BuildRequires: python%{pyver}-cliff
 
 # Handle python2 exception
@@ -149,6 +147,9 @@ install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_
 
 
 %changelog
+* Fri May 10 2019 Alfredo Moralejo <amoralej@redhat.com> 3.8.0-2
+- Remove osprofiler as requirement.
+
 * Mon Mar 11 2019 RDO <dev@lists.rdoproject.org> 3.8.0-1
 - Update to 3.8.0
 
