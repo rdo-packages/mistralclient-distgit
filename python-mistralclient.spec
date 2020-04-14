@@ -37,9 +37,7 @@ BuildArch:      noarch
 %package -n     python%{pyver}-%{pypi_name}
 Summary:        Python client for Mistral REST API
 %{?python_provide:%python_provide python%{pyver}-%{pypi_name}}
-%if %{pyver} == 3
 Obsoletes: python2-%{pypi_name} < %{version}-%{release}
-%endif
 
 BuildRequires:  python%{pyver}-devel
 BuildRequires:  python%{pyver}-setuptools
@@ -57,12 +55,7 @@ Requires:       python%{pyver}-stevedore >= 1.20.0
 Requires:       python%{pyver}-keystoneauth1 >= 3.4.0
 Requires:       python%{pyver}-cliff >= 2.8.0
 
-# Handle python2 exception
-%if %{pyver} == 2
-Requires:       PyYAML >= 3.10
-%else
 Requires:       python%{pyver}-PyYAML >= 3.10
-%endif
 
 
 %description -n python%{pyver}-%{pypi_name}
@@ -83,14 +76,8 @@ BuildRequires: python%{pyver}-oslo-i18n
 BuildRequires: python%{pyver}-osc-lib
 BuildRequires: python%{pyver}-cliff
 
-# Handle python2 exception
-%if %{pyver} == 2
-BuildRequires: PyYAML
-BuildRequires: python-requests-mock
-%else
 BuildRequires: python%{pyver}-PyYAML
 BuildRequires: python%{pyver}-requests-mock
-%endif
 
 
 %description -n python-%{pypi_name}-doc
