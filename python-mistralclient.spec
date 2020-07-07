@@ -109,7 +109,7 @@ install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/python_%{pypi_name}-*-py?.?.egg-info
+%{python3_sitelib}/python_%{pypi_name}-*-py%{python3_version}.egg-info
 %{_bindir}/%{cliname}
 %{_bindir}/%{cliname}-3
 %{_sysconfdir}/bash_completion.d/python-mistralclient
