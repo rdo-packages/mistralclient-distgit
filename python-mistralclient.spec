@@ -39,7 +39,6 @@ Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-oslo-serialization >= 2.18.0
 Requires:       python3-pbr
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
 Requires:       python3-stevedore >= 1.20.0
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-cliff >= 2.8.0
