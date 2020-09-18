@@ -10,8 +10,8 @@ Python client for Mistral REST API. Includes python library for Mistral API \
 and Command Line Interface (CLI) library.
 
 Name:           python-%{pypi_name}
-Version:        XXX
-Release:        XXX
+Version:        4.1.1
+Release:        1%{?dist}
 Summary:        Python client for Mistral REST API
 
 License:        ASL 2.0
@@ -122,3 +122,6 @@ install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_
 
 
 %changelog
+* Fri Sep 18 2020 RDO <dev@lists.rdoproject.org> 4.1.1-1
+- Update to 4.1.1
+
