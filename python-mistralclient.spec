@@ -44,7 +44,7 @@ Obsoletes: python2-%{pypi_name} < %{version}-%{release}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-pbr
-BuildRequires:  git
+BuildRequires:  git-core
 
 Requires:       python3-osc-lib >= 1.10.0
 Requires:       python3-oslo-i18n >= 3.15.3
