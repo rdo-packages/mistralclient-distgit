@@ -56,7 +56,7 @@ Requires:       python3-stevedore >= 1.20.0
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-cliff >= 2.8.0
 
-Requires:       python3-PyYAML >= 3.10
+Requires:       python3-yaml >= 3.13
 
 
 %description -n python3-%{pypi_name}
