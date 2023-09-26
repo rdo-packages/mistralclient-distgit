@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+%global sources_gpg_sign 0x815AFEC729392386480E076DCC0DFE2D21C023C9
 %global pypi_name mistralclient
 %global cliname   mistral
 %global with_doc 1
@@ -18,8 +18,8 @@ Python client for Mistral REST API. Includes python library for Mistral API \
 and Command Line Interface (CLI) library.
 
 Name:           python-%{pypi_name}
-Version:        XXX
-Release:        XXX
+Version:        5.1.0
+Release:        1%{?dist}
 Summary:        Python client for Mistral REST API
 
 License:        Apache-2.0
@@ -135,3 +135,6 @@ install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_
 
 
 %changelog
+* Tue Sep 26 2023 RDO <dev@lists.rdoproject.org> 5.1.0-1
+- Update to 5.1.0
+
