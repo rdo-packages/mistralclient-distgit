@@ -135,3 +135,4 @@ install -m 644 -T tools/mistral.bash_completion %{buildroot}%{_sysconfdir}/bash_
 
 
 %changelog
+# REMOVEME: error caused by commit https://opendev.org/openstack/python-mistralclient/commit/b94abb44d9d0f92a527dfa1ecf2e4d3c1be6178c
